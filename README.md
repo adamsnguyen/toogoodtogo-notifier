@@ -1,6 +1,6 @@
 # toogoodtogo-notifier
 
-This uses the Telegram messaging app to send notifications of your favourite stores when items become available.
+This uses the Telegram messaging app to send notifications of your favourite stores when items become available. It will notify you when item availability changes.
 
 You will need to go to visit here: https://core.telegram.org/
 
