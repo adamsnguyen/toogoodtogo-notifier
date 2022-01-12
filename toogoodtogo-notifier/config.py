@@ -8,4 +8,8 @@ tgtg = {
 telegram = {
     "api_id": 16236697,
     "api_hash": "507fd83ed969e83941945432dc0d1abf",
+    "bot_token": "5095418377:AAFjWfYS5Zwr2DtTf6JvdxjS1s7iWCGPUmg",
+    'my_name': 'adamnguyen1992',
+    'bot_name': 'my_tgtg_notifier_bot',
+    'channel_id' : -1001505180846
 }

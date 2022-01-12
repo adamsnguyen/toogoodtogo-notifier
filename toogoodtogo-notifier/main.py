@@ -1,5 +1,6 @@
+from telethon.tl.types import Channel
 from tgtg import TgtgClient
-from telethon import TelegramClient, events, sync
+from telethon import TelegramClient, events, sync, functions, types
 from datetime import datetime
 import config
 import time as tm
@@ -11,7 +12,11 @@ tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['a
                     user_id=config.tgtg['user_id'])
 
 telegram_client = TelegramClient('TooGoodToGO Notifier', config.telegram['api_id'], config.telegram['api_hash'])
-telegram_client.start()
+telegram_client.start(bot_token=config.telegram["bot_token"])
+# telegram_client(functions.account.ResetAuthorizationRequest(hash=-12398745604826))
+# telegram_client.log_out()
+
+print(telegram_client.session.list_sessions())
 
 already_notified = {}
 
@@ -28,8 +33,8 @@ while True:
                 and int(i['items_available'] > 0)):
             already_notified[i['display_name']] = i['items_available']
             now = str(datetime.today().strftime("%I:%M %p"))
-            message = f"{i['display_name']} is available! (Items available:{i['items_available']}, Time:{now})"
-            telegram_client.send_message('adamnguyen1992', message)
+            message = f"**{i['display_name']}** is available! (Items available:**{i['items_available']}**, Time:{now})"
+            telegram_client.send_message(entity=config.telegram['channel_id'], message = message, silent=False)
             print(message)
 
     tm.sleep(5)
