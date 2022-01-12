@@ -1,0 +1,6 @@
+[submodule "tgtg-python"]
+	path = tgtg-python
+	url = https://github.com/adamsnguyen/tgtg-python
+[submodule "toogoodtogo-notifier/tgtg-api"]
+	path = toogoodtogo-notifier/tgtg-api
+	url = https://github.com/adamsnguyen/tgtg-python
