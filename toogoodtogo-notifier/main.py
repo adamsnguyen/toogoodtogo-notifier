@@ -22,20 +22,27 @@ already_notified = {}
 
 while True:
 
-    update = tgtg_client.get_items()
+    try:
 
-    for i in update:
-        if int(i['items_available']) == 0 and i['display_name'] in already_notified:
-            del already_notified[i['display_name']]
+        update = tgtg_client.get_items()
 
-        if (i['items_available'] > 0 and i['display_name'] not in already_notified) or (
-                i['display_name'] in already_notified and int(already_notified[i['display_name']]) != int(i['items_available'])
-                and int(i['items_available'] > 0)):
-            already_notified[i['display_name']] = i['items_available']
-            now = str(datetime.today().strftime("%I:%M %p"))
-            message = f"**{i['display_name']}** is available! (Items available:**{i['items_available']}**, Time:{now})"
-            telegram_client.send_message(entity=config.telegram['channel_id'], message = message, silent=False)
-            print(message)
+        for i in update:
+            if int(i['items_available']) == 0 and i['display_name'] in already_notified:
+                del already_notified[i['display_name']]
+
+            if (i['items_available'] > 0 and i['display_name'] not in already_notified) or (
+                    i['display_name'] in already_notified and int(already_notified[i['display_name']]) != int(i['items_available'])
+                    and int(i['items_available'] > 0)):
+                already_notified[i['display_name']] = i['items_available']
+                now = str(datetime.today().strftime("%I:%M %p"))
+                message = f"**{i['display_name']}** is available! (Items available:**{i['items_available']}**, Time:{now})"
+                telegram_client.send_message(entity=config.telegram['channel_id'], message = message, silent=False)
+                print(message)
+
+    except:
+        
+        telegram_client.start(bot_token=config.telegram["bot_token"])
+
 
     tm.sleep(5)
 
