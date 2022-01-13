@@ -10,4 +10,6 @@ tgtg = {
 telegram = {
     "api_id": 123,
     "api_hash": "xxx",
+    "bot_id": "xxx",
+    "channel_id": "xxx",
 }
