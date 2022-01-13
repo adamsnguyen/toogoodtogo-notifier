@@ -16,7 +16,11 @@ This python script uses the unofficial TooGoodToGo API client here: https://gith
 pip install telethon
 ```
 4) If you haven't done so already, rename the example_config.py to config.py - This is where you're storing your credentials.
-5) Run the app. It may require you to login with credentials you already have in the terminal/console
+5) Run the app. It may require you to login with credentials that you already retrieved from earlier. Go to the folder containing main.py and use the command:
+
+```shell
+python main.py
+```
 
 Enjoy!
 
