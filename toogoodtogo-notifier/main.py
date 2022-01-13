@@ -36,11 +36,15 @@ while True:
                 already_notified[i['display_name']] = i['items_available']
                 now = str(datetime.today().strftime("%I:%M %p"))
                 message = f"**{i['display_name']}** is available! (Items available:**{i['items_available']}**, Time:{now})"
-                telegram_client.send_message(entity=config.telegram['channel_id'], message = message, silent=False)
+                result = telegram_client.send_message(entity=config.telegram['channel_id'], message = message, silent=False)
                 print(message)
 
-    except:
-        
+    except Exception as e:
+        print("Issues with Internet Connection...")
+        print(e)
+        tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['access_token'],
+                    refresh_token=config.tgtg['refresh_token'],
+                    user_id=config.tgtg['user_id'])
         telegram_client.start(bot_token=config.telegram["bot_token"])
 
 

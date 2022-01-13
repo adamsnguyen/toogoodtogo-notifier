@@ -39,7 +39,7 @@ class TgtgClient:
         proxies=None,
         timeout=None,
         access_token_lifetime=DEFAULT_ACCESS_TOKEN_LIFETIME,
-        device_type="WINDOWS",
+        device_type="ANDROID",
     ):
 
         self.base_url = url
