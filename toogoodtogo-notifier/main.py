@@ -9,8 +9,10 @@ import shlex
 
 # setup
 
+args = shlex.split(f' {config.vpn["vpn-script-location"]} {config.vpn["vpn-script-input"]}')
+
 ## Begin VPN
-subprocess.Popen(f'{config.vpn["vpn-script-input"]} {config.vpn["vpn-script-location"]}', stdin=None, stdout=None, stderr=None, close_fds=True)
+subprocess.Popen(args, stdin=None, stdout=None, stderr=None, close_fds=True)
 tm.sleep(15)
 
 
@@ -53,7 +55,7 @@ while True:
 
     except Exception as e:
         print("Issues with Internet Connection...")
-        subprocess.Popen(f'{config.vpn["vpn-script-input"]} {config.vpn["vpn-script-location"]}', stdin=None, stdout=None, stderr=None, close_fds=True)
+        subprocess.Popen(args , stdin=None, stdout=None, stderr=None, close_fds=True)
         print(e)
         tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['access_token'],
                     refresh_token=config.tgtg['refresh_token'],
