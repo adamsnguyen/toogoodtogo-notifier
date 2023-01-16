@@ -9,7 +9,7 @@ import shlex
 
 # setup
 
-args = shlex.split(f' {config.vpn["vpn-script-location"]} {config.vpn["vpn-script-input"]}')
+args = f'{config.vpn["vpn-script-location"]}'
 
 ## Begin VPN
 subprocess.Popen(args, stdin=None, stdout=None, stderr=None, close_fds=True)
