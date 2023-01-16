@@ -9,7 +9,7 @@ import os
 # setup
 
 ## Begin VPN
-os.system(f'cd {config.vpn["vpn-script-location"]} {config.vpn["vpn-script"]}')
+os.system(f'cd {config.vpn["vpn-script-location"]} && {config.vpn["vpn-script"]}')
 
 ## Login to TGTG
 tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['access_token'],
@@ -50,7 +50,7 @@ while True:
 
     except Exception as e:
         print("Issues with Internet Connection...")
-        os.system(f'cd {config.vpn["vpn-script-location"]} {config.vpn["vpn-script"]}')
+        os.system(f'cd {config.vpn["vpn-script-location"]} && {config.vpn["vpn-script"]}')
         print(e)
         tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['access_token'],
                     refresh_token=config.tgtg['refresh_token'],
