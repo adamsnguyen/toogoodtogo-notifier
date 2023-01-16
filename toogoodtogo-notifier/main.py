@@ -4,6 +4,8 @@ from telethon import TelegramClient, events, sync, functions, types
 from datetime import datetime
 import config
 import time as tm
+import os
+# import request
 
 # setup
 
@@ -11,7 +13,7 @@ tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['a
                     refresh_token=config.tgtg['refresh_token'],
                     user_id=config.tgtg['user_id'])
 
-telegram_client = TelegramClient('TooGoodToGO Notifier', config.telegram['api_id'], config.telegram['api_hash'])
+telegram_client = TelegramClient(config.telegram['bot_id'], config.telegram['api_id'], config.telegram['api_hash'])
 telegram_client.start(bot_token=config.telegram["bot_token"])
 # telegram_client(functions.account.ResetAuthorizationRequest(hash=-12398745604826))
 # telegram_client.log_out()
@@ -37,19 +39,20 @@ while True:
                 now = str(datetime.today().strftime("%I:%M %p"))
                 message = f"**{i['display_name']}** is available! (Items available:**{i['items_available']}**, Time:{now})"
                 result = telegram_client.send_message(entity=config.telegram['channel_id'], message = message, silent=False)
+                
                 print(message)
+                
+        tm.sleep(15)
 
     except Exception as e:
         print("Issues with Internet Connection...")
+        os.system(f'cd {config.vpn["vpn-script-location"]} {config.vpn["vpn-script"]}')
+        tm.sleep(15)
         print(e)
         tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['access_token'],
                     refresh_token=config.tgtg['refresh_token'],
                     user_id=config.tgtg['user_id'])
         telegram_client.start(bot_token=config.telegram["bot_token"])
-
-
-    tm.sleep(5)
-
 
     
 

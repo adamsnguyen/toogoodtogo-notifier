@@ -1,8 +1,9 @@
 # Run this file, login from your email and copy down the information that is printed.
 
 from tgtg import TgtgClient
+import config
 
-client = TgtgClient(email='avnguyen213@gmail.com')
+client = TgtgClient(email=config.tgtg["email"])
 credentials = client.get_credentials()
 print(credentials)
 {
