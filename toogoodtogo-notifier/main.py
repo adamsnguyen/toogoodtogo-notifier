@@ -53,7 +53,7 @@ while True:
 
     except Exception as e:
         print("Issues with Internet Connection...")
-        subprocess.Popen((f'{config.vpn["vpn-script-location"]} {config.vpn["vpn-script-input"]}', shell=True, stdin=None, stdout=None, stderr=None, close_fds=True)
+        subprocess.Popen(f'{config.vpn["vpn-script-location"]} {config.vpn["vpn-script-input"]}', shell=True, stdin=None, stdout=None, stderr=None, close_fds=True)
         print(e)
         tgtg_client = TgtgClient(email=config.tgtg['email'], access_token=config.tgtg['access_token'],
                     refresh_token=config.tgtg['refresh_token'],
