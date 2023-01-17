@@ -13,7 +13,7 @@ args = f'{config.vpn["vpn-script-location"]}'
 
 ## Begin VPN
 subprocess.Popen(args, stdin=None, stdout=None, stderr=None, close_fds=True)
-tm.sleep(15)
+tm.sleep(30)
 
 
 ## Login to TGTG
@@ -51,7 +51,7 @@ while True:
                 
                 print(message)
 
-        tm.sleep(15)
+        tm.sleep(30)
 
     except Exception as e:
         print("Issues with Internet Connection...")
