@@ -95,6 +95,8 @@ class TgtgClient:
             "user-agent": self.user_agent,
             "accept-language": self.language,
             "Accept-Encoding": "gzip",
+            "accept": "application/json",
+            "content-type": "application/json; charset=utf-8"
         }
         if self.access_token:
             headers["authorization"] = f"Bearer {self.access_token}"
